@@ -228,7 +228,6 @@ func DefaultJWTProvider(name, namespace, roleArn string, aud []string, region st
 	}
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config:            *awscfg,
-		SharedConfigState: session.SharedConfigDisable,
 		Handlers:          handlers,
 	})
 	if err != nil {
@@ -274,7 +273,6 @@ func getAWSSession(config *aws.Config, enableCache bool, name, kind, namespace, 
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config:            *config,
 		Handlers:          handlers,
-		SharedConfigState: session.SharedConfigDisable,
 	})
 	if err != nil {
 		return nil, err
